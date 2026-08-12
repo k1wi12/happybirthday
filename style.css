@@ -788,6 +788,12 @@
     height:100%;
     object-fit:cover;
     display:block;
+    cursor:zoom-in;
+    transition:transform .3s ease;
+  }
+
+  .polaroid .frame img:hover{
+    transform:scale(1.05);
   }
 
   .polaroid .ph-placeholder{
@@ -836,6 +842,191 @@
 
   .replay-btn:hover{ background:var(--blush-deep); transform:translateY(-2px); }
 
+  /* ---------- Gift & forgiveness flow ---------- */
+  .gift-section{
+    margin-top:56px;
+    max-width:440px;
+    width:100%;
+    text-align:center;
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .7s ease, transform .7s ease;
+    position:relative;
+  }
+
+  .gift-section.reveal{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .gift-slide{
+    background:var(--cream);
+    border-radius:18px;
+    padding:32px 22px 30px;
+    box-shadow:0 14px 30px -14px rgba(62,33,48,.35);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+
+  .gift-slide.hide{
+    display:none;
+  }
+
+  .gift-emoji{
+    font-size:36px;
+    margin-bottom:10px;
+  }
+
+  .gift-question{
+    font-family:'Playfair Display', serif;
+    font-size:18px;
+    color:var(--plum);
+    margin-bottom:8px;
+    line-height:1.4;
+  }
+
+  .gift-sub{
+    font-size:13.5px;
+    color:#9a6f7a;
+    line-height:1.6;
+    margin-bottom:22px;
+  }
+
+  .gift-choice{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .gift-btn-solid{
+    background:linear-gradient(135deg, var(--rose), var(--deep));
+    color:#fff;
+    border:none;
+    padding:11px 24px;
+    border-radius:999px;
+    font-size:13.5px;
+    font-weight:600;
+    transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:0 8px 18px -8px rgba(166,51,92,.55);
+  }
+
+  .gift-btn-solid:hover{
+    transform:translateY(-2px) scale(1.03);
+  }
+
+  .gift-btn-outline{
+    background:none;
+    border:1.5px solid var(--blush-deep);
+    color:var(--deep);
+    padding:11px 24px;
+    border-radius:999px;
+    font-size:13.5px;
+    font-weight:500;
+    transition:background .2s ease;
+  }
+
+  .gift-btn-outline:hover{ background:var(--blush-deep); }
+
+  .gift-tease{
+    margin-top:16px;
+    font-size:12.5px;
+    color:var(--deep);
+    font-style:italic;
+    min-height:16px;
+  }
+
+  /* ---------- Background music toggle ---------- */
+  .music-toggle{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--rose), var(--deep));
+    color:#fff;
+    border:none;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 22px -8px rgba(166,51,92,.55);
+    z-index:20;
+    transition:transform .2s ease;
+    animation:musicPulse 2.2s ease-in-out infinite;
+  }
+
+  .music-toggle:hover{ transform:scale(1.08); }
+
+  .music-toggle.paused{ animation:none; opacity:.75; }
+
+  @keyframes musicPulse{
+    0%, 100%{ transform:scale(1); }
+    50%{ transform:scale(1.07); }
+  }
+
+  @media (max-width: 380px){
+    .music-toggle{ width:40px; height:40px; font-size:15px; bottom:14px; right:14px; }
+  }
+
+  /* ---------- Meme video reward ---------- */
+  .meme-video-wrap{
+    margin-top:20px;
+  }
+
+  .meme-video-wrap video{
+    width:100%;
+    max-width:280px;
+    border-radius:14px;
+    box-shadow:0 12px 26px -12px rgba(62,33,48,.4);
+  }
+
+  .meme-video-wrap .meme-placeholder{
+    font-size:11.5px;
+    color:#9a6f7a;
+    background:var(--blush);
+    border:1px dashed var(--blush-deep);
+    border-radius:12px;
+    padding:14px;
+    line-height:1.6;
+  }
+
+  /* ---------- Forgiveness question with runaway "no" ---------- */
+  .forgive-question{
+    font-family:'Playfair Display', serif;
+    font-size:17px;
+    color:var(--plum);
+    margin-bottom:20px;
+    line-height:1.5;
+  }
+
+  .forgive-choice{
+    position:relative;
+    min-height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+  }
+
+  .forgive-choice .gift-btn-solid{
+    position:relative;
+    z-index:2;
+  }
+
+  .forgive-choice .dodge{
+    position:absolute;
+    top:50%;
+    left:calc(50% + 60px);
+    transform:translate(-50%, -50%);
+    z-index:3;
+    transition:left .22s ease, top .22s ease, transform .22s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .forgive-choice .dodge{ transition:none; }
+  }
+
   /* ---------- Floating hearts ---------- */
   .heart-float{
     position:fixed;
@@ -854,6 +1045,109 @@
     100%{ opacity:0; transform:translateY(-100vh) scale(1.1) rotate(20deg); }
   }
 
+  /* ---------- Photo lightbox (zoom kenangan) ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(40,20,28,.9);
+    z-index:40;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:56px 24px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+
+  .lightbox.open{
+    opacity:1;
+    visibility:visible;
+  }
+
+  .lightbox-content{
+    position:relative;
+    max-width:min(560px, 92vw);
+    max-height:100%;
+    transform:scale(.9);
+    transition:transform .35s cubic-bezier(.5,-0.1,.3,1.2);
+  }
+
+  .lightbox.open .lightbox-content{
+    transform:scale(1);
+  }
+
+  .lightbox-photo{
+    position:relative;
+    line-height:0;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,.65);
+    background:var(--cream);
+  }
+
+  .lightbox-img{
+    display:block;
+    width:100%;
+    max-height:76vh;
+    object-fit:contain;
+    background:var(--cream);
+  }
+
+  .lightbox-caption{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    padding:38px 22px 18px;
+    background:linear-gradient(to top, rgba(20,10,14,.85), rgba(20,10,14,0));
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:17px;
+    line-height:1.5;
+    letter-spacing:.01em;
+    color:var(--cream);
+    text-align:center;
+    text-shadow:0 1px 6px rgba(0,0,0,.5);
+  }
+
+  .lightbox-caption:empty{
+    display:none;
+  }
+
+  .lightbox-close{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,.14);
+    color:var(--cream);
+    font-size:24px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+    z-index:41;
+  }
+
+  .lightbox-close:hover{
+    background:rgba(255,255,255,.28);
+    transform:rotate(90deg);
+  }
+
+  @media (max-width:480px){
+    .lightbox{ padding:70px 16px 24px; }
+    .lightbox-close{ top:14px; right:14px; width:36px; height:36px; font-size:20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .lightbox, .lightbox-content, .lightbox-close{ transition:none !important; }
+  }
 
   #confetti-canvas{
     position:fixed;
@@ -870,68 +1164,4 @@
   @media (prefers-reduced-motion: reduce){
     .petal, .flame, .balloon, .smoke{ animation:none !important; }
     .invitation-inner, .message-card, #surprise, #cover, .flash{ transition:none !important; animation:none !important; }
-  }
-
-  /* ================= MODAL FOTO ================= */
-  .modal {
-    display: none; /* Disembunyikan secara default */
-    position: fixed;
-    z-index: 100;
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(62, 33, 48, 0.9); /* Warna plum semi-transparan dari tema kamu */
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .modal.show {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-  }
-
-  .modal-content {
-    max-width: 85%;
-    max-height: 70vh;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    object-fit: contain;
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-  }
-
-  .modal.show .modal-content {
-    transform: scale(1);
-  }
-
-  #modalCaption {
-    margin-top: 15px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 24px;
-    color: var(--cream);
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: var(--rose-soft);
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .modal-close:hover,
-  .modal-close:focus {
-    color: var(--gold);
   }
