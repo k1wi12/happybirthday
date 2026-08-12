@@ -5,40 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Untuk Kamu, Sayang 🎂</title>
 
-<!--
-  ===================================================================
-  STRUKTUR FILE INI:
-    - index.html  → struktur halaman (file ini)
-    - style.css   → semua tampilan/desain
-    - script.js   → semua logika & interaksi (lilin, kado, galeri, dst)
-
-  CARA MENGUBAH ISI (biar gampang buat kamu edit):
-  Buka file "script.js", cari bagian "const CONFIG" di paling atas.
-  Di situ ada:
-    - name      : nama pacarmu
-    - age       : jumlah lilin di kue
-    - message   : pesan ulang tahunnya
-    - surprises : isi kotak-kotak kado kecil
-    - photos    : 8 foto kenangan (4 landscape, 4 potrait)
-
-  KHUSUS FOTO:
-  1. Taruh 8 file foto (misal foto1.jpg, foto2.jpg, dst) di folder
-     YANG SAMA dengan index.html, style.css, dan script.js.
-  2. Di "photos", isi src: "foto1.jpg" (sesuaikan nama filenya).
-  3. Foto landscape (mendatar) dan portrait (berdiri) sudah diatur
-     otomatis bingkainya, jadi nggak perlu crop manual.
-  Kalau src dikosongkan (""), akan muncul kotak placeholder dulu.
-
-  Ganti isinya, simpan, buka lagi index.html di browser. Selesai!
-
-  PENTING: ketiga file (index.html, style.css, script.js) HARUS
-  ada di folder yang sama, jangan dipindah-pindah sendiri-sendiri.
-  ===================================================================
--->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -46,7 +15,6 @@
 
 <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
 
-<!-- ===================== COVER / INVITATION ===================== -->
 <section id="cover">
   <p class="eyebrow">Sebuah undangan kecil</p>
   <div class="invitation" id="invitation">
@@ -68,7 +36,6 @@
 </section>
 <div class="flash" id="flash" aria-hidden="true"></div>
 
-<!-- ===================== SURPRISE SCREEN ===================== -->
 <section id="surprise">
   <div class="headline">
     <p class="kicker">Selamat ulang tahun</p>
@@ -106,16 +73,57 @@
     <p class="gallery-title">kenangan-kenangan kita</p>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
+
+  <div class="gift-section" id="giftSection">
+
+    <div class="gift-slide" id="giftSlideAsk">
+      <p class="gift-emoji">🎁</p>
+      <h3 class="gift-question">Sebenernya ada satu hadiah lagi buat kamu...</h3>
+      <p class="gift-sub">mau gak hadiahnya?</p>
+      <div class="gift-choice">
+        <button class="gift-btn-solid" id="giftYesBtn" type="button">Mau dong</button>
+        <button class="gift-btn-outline" id="giftNoBtn" type="button">Gak usah</button>
+      </div>
+      <p class="gift-tease" id="giftTease"></p>
+    </div>
+
+    <div class="gift-slide hide" id="giftSlideSorry">
+      <p class="gift-emoji">🥺</p>
+      <h3 class="gift-question">umm jadi gini sayangg</h3>
+      <p class="gift-sub">jujur, hadiahnya... itu belum datang sama sekalii sudaa dari tanggal 8 Agustus<br>maafin akuu yaa ini kesalahan terbesar aku ke kamuu jujurr aku gatauu harus ngapainn untuk dapatin paket itu dengan cepattt sayangg</p>
+      <p class="forgive-question" id="forgiveQuestion"></p>
+      <div class="forgive-choice" id="forgiveChoice">
+        <button class="gift-btn-solid" id="forgiveYesBtn" type="button">Iya</button>
+        <button class="gift-btn-outline dodge" id="forgiveNoBtn" type="button">Gak</button>
+      </div>
+    </div>
+
+    <div class="gift-slide hide" id="giftSlideDone">
+      <p class="gift-emoji">❤️</p>
+      <h3 class="gift-question">terimakasih yaa sayangg udah maafin akuu</h3>
+      <p class="gift-sub">terimkasih yaa sayangg ku hasiann kuu my lovee udaa maapin kesalahan besar ku.</p>
+      <div class="meme-video-wrap" id="memeVideoWrap"></div>
+    </div>
+
+  </div>
 </section>
 
-<!-- ===================== MODAL FOTO (LIGHTBOX) ===================== -->
-<div id="photoModal" class="modal">
-  <span class="modal-close" id="modalClose">&times;</span>
-  <img class="modal-content" id="modalImg" alt="Foto Kenangan Besar">
-  <div id="modalCaption"></div>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Tutup foto">&times;</button>
+  <div class="lightbox-content">
+    <div class="lightbox-photo">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
 </div>
 
 <canvas id="confetti-canvas"></canvas>
+
+<audio id="bgMusic" loop preload="auto"></audio>
+<button class="music-toggle" id="musicToggle" type="button" aria-label="Putar/jeda musik" style="display:none;">
+  <span id="musicIcon">♪</span>
+</button>
 
 <script src="script.js"></script>
 </body>
