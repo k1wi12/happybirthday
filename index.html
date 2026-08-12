@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu, Sayang 🎂</title>
+
+<!--
+  ===================================================================
+  STRUKTUR FILE INI:
+    - index.html  → struktur halaman (file ini)
+    - style.css   → semua tampilan/desain
+    - script.js   → semua logika & interaksi (lilin, kado, galeri, dst)
+
+  CARA MENGUBAH ISI (biar gampang buat kamu edit):
+  Buka file "script.js", cari bagian "const CONFIG" di paling atas.
+  Di situ ada:
+    - name      : nama pacarmu
+    - age       : jumlah lilin di kue
+    - message   : pesan ulang tahunnya
+    - surprises : isi kotak-kotak kado kecil
+    - photos    : 8 foto kenangan (4 landscape, 4 potrait)
+
+  KHUSUS FOTO:
+  1. Taruh 8 file foto (misal foto1.jpg, foto2.jpg, dst) di folder
+     YANG SAMA dengan index.html, style.css, dan script.js.
+  2. Di "photos", isi src: "foto1.jpg" (sesuaikan nama filenya).
+  3. Foto landscape (mendatar) dan portrait (berdiri) sudah diatur
+     otomatis bingkainya, jadi nggak perlu crop manual.
+  Kalau src dikosongkan (""), akan muncul kotak placeholder dulu.
+
+  Ganti isinya, simpan, buka lagi index.html di browser. Selesai!
+
+  PENTING: ketiga file (index.html, style.css, script.js) HARUS
+  ada di folder yang sama, jangan dipindah-pindah sendiri-sendiri.
+  ===================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+<!-- ===================== COVER / INVITATION ===================== -->
+<section id="cover">
+  <p class="eyebrow">Sebuah undangan kecil</p>
+  <div class="invitation" id="invitation">
+    <div class="sparkle-layer" id="sparkleLayer" aria-hidden="true"></div>
+    <div class="invitation-inner">
+      <button class="face face-front" id="openBtn" type="button" aria-label="Ketuk untuk membuka kejutan">
+        <span class="seal">♥</span>
+        <h1 class="invitation-title" id="coverTitle">Untuk Kamu</h1>
+        <p class="invitation-sub">ada sesuatu yang disiapkan<br>khusus untukmu</p>
+        <span class="tap-hint">ketuk untuk membuka</span>
+      </button>
+      <div class="face face-back">
+        <h1 class="invitation-title">Siap-siap ya…</h1>
+        <p class="invitation-sub">Sesuatu yang manis sedang<br>menunggu di baliknya.</p>
+        <p class="mini-heart">♥ ♥ ♥</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="flash" id="flash" aria-hidden="true"></div>
+
+<!-- ===================== SURPRISE SCREEN ===================== -->
+<section id="surprise">
+  <div class="headline">
+    <p class="kicker">Selamat ulang tahun</p>
+    <h1 id="mainTitle">Untuk <span id="nameSlot">Kamu</span> 🎂</h1>
+    <p class="instruction">Tiup lilinnya satu-satu ya — klik atau ketuk tiap lilin ✨</p>
+  </div>
+
+  <div class="cake-wrap">
+    <div class="candles" id="candles"></div>
+    <div class="tier tier-top">
+      <div class="drip"></div>
+    </div>
+    <div class="tier tier-bottom">
+      <div class="ribbon"></div>
+      <div class="ribbon-bow"></div>
+      <div class="ribbon-knot"></div>
+    </div>
+    <div class="plate"></div>
+    <button class="blow-btn" id="blowBtn" type="button">tiup semua sekaligus</button>
+  </div>
+
+  <div class="message-card" id="messageCard">
+    <p class="to">Untuk <span id="nameSlot2">Kamu</span>,</p>
+    <p id="messageText"></p>
+    <p class="sign">dengan sayang</p>
+    <button class="replay-btn" id="replayBtn" type="button">putar ulang kejutannya ✨</button>
+  </div>
+
+  <div class="gifts-section" id="giftsSection">
+    <p class="gifts-title">psst, masih ada kejutan kecil lainnya…</p>
+    <div class="gifts-grid" id="giftsGrid"></div>
+  </div>
+
+  <div class="gallery-section" id="gallerySection">
+    <p class="gallery-title">kenangan-kenangan kita</p>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== MODAL FOTO (LIGHTBOX) ===================== -->
+<div id="photoModal" class="modal">
+  <span class="modal-close" id="modalClose">&times;</span>
+  <img class="modal-content" id="modalImg" alt="Foto Kenangan Besar">
+  <div id="modalCaption"></div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
