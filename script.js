@@ -1,42 +1,58 @@
-/* =================================================================
-     GANTI ISINYA DI SINI:
-  ================================================================= */
-  const CONFIG = {
-    name: "Sayangku",        // ganti dengan nama pacarmu
-    age: 5,                  // jumlah lilin di kue (misal umur, boleh diganti bebas)
+const CONFIG = {
+    name: "My Love",       
+    age: 17 ,                 
     message:
-`Hari ini spesial karena ada kamu di dalamnya.
-Terima kasih sudah jadi alasan aku tersenyum
-di hari-hari biasa sekalipun.
+`Hari ini spesial untuk kamu karena kamu sekarang sudah bertambah usia,
+aku harap hari hari kamu semakin bahagia ya bersama ku dan bersama teman kamu,
+dan aku berharap kita terus bersama maybe in another day but not this month and next month, but in October.
 
 Semoga tahun ini membawa semua hal baik
 yang kamu doakan diam-diam.
 
-Selamat ulang tahun. Aku sayang kamu.`,
-    surprises: [               // isi kotak kado kecil, boleh ditambah/kurang sesuka hati
-      "Terima kasih sudah selalu jadi tempat pulang paling nyaman.",
-      "Aku suka caramu tertawa lepas tiap kali kita jalan bareng.",
-      "Semoga tahun ini kamu makin bahagia, kayak kamu bikin aku bahagia."
+Selamat ulang tahun sayangg, I always love youu forever and ever`,
+    surprises: [               
+      "Terima kasih kamu sudah jadi diri kamu sendiri kalau bersama ku",
+      "Aku suka kamu tertawa lepad jika bersama ku.",
+      "Semoga tahun ini dan bulan ini kamu selalu bahagia yaa."
     ],
-    photos: [                  // 8 foto kenangan: isi "src" dengan nama file fotomu
-      { src: "", caption: "Jalan-jalan pertama kita", orientation: "landscape" },
-      { src: "", caption: "Makan malam spesial",       orientation: "portrait"  },
-      { src: "", caption: "Liburan ke pantai",          orientation: "landscape" },
-      { src: "", caption: "Momen konyol berdua",         orientation: "portrait"  },
-      { src: "", caption: "Nonton sunset bareng",        orientation: "landscape" },
-      { src: "", caption: "Foto favoritku",              orientation: "portrait"  },
-      { src: "", caption: "Hari ulang tahunmu tahun lalu", orientation: "landscape" },
-      { src: "", caption: "Selalu bareng, ya",           orientation: "portrait"  }
-    ]
+    photos: [
+      { src: "landscapefirstmeet.jpg", caption: "Jalan-jalan pertama kita", orientation: "landscape" },
+      { src: "potraitkfc.jpg", caption: "Makan malam",       orientation: "portrait"  },
+      { src: "landscapebraga.jpg", caption: "Braga berdua",          orientation: "landscape" },
+      { src: "potraitfotbar.jpg", caption: "Fotbar pertama kita",         orientation: "portrait"  },
+      { src: "landscapepempek.jpg", caption: "Pertama kali masak bareng",        orientation: "landscape" },
+      { src: "potraitharimau.jpg", caption: "pergi ke zoo berdua",              orientation: "portrait"  },
+      { src: "photoboothlandscape.jpg", caption: "First time kita photobooth", orientation: "landscape" },
+      { src: "potraitmirror.jpg", caption: "Kependekan buat mencet mirror nya",           orientation: "portrait"  },
+      { src: "landscapegrab.jpg", caption: "Ini kmau mau cium tapi gengsi",       orientation: "landscape"},
+      { src: "landscapetour.jpg", caption: "Kamu marah kepada ku karena kebab",    orientation: "landscape"},
+      {src:  "potraitkucing.jpg", caption: "Bukan hanya kucing doang yang bikin saya cemburu",       orientation: "potrait"},
+      {src: "potraitposter.jpg", caption: "Kembar tak seiras",    orientation: "potrait"},
+      {src: "potraitvs.jpg", caption: "First time kita video call",   orientation: "potrait"},
+      {src: "landscapekiaraartha.jpg", caption: "Date di air mancur Kiara Artha Park",   orientation: "landscape"},
+      {src: "potraitice.jpg", caption: "mam aisklim sesuai janji aku",  orientation: "potrait"},
+      {src: "landscapengambek.jpg", caption: "Ini ngambek karena kecapean", orientation: "landscape"},
+      {src: "potraittamanbalkot.jpg", caption: "Ini awal kita mulai date berdua loh ya", orientation: "potrait"},
+      {src: "potraitgemes.jpg", caption: "Gemess bangettt my lovee", orientation: "landscape"},
+      {src: "potraitbraga.jpg", caption: "inii jugaa maniss awowoo", orientation: "potrait"}
+
+
+
+    ],
+    memeVideo: {
+      src: "dino.mp4",
+      caption: "yeayyy aku ga dimarahinn,maaf yaa sayangg atas kelalaian ku mungkin beberapa bilang aku ga ngasih kamu hadiah walaupun sering barengan tapi aku janjii seteleh ini datang aku langsung kasih kamuu sayangggg"
+    },
+    music: {
+      src: "mcr.mp3"
+    }
   };
-  /* ================================================================= */
 
   document.getElementById('coverTitle').textContent = "Untuk " + CONFIG.name;
   document.getElementById('nameSlot').textContent = CONFIG.name;
   document.getElementById('nameSlot2').textContent = CONFIG.name;
   document.getElementById('messageText').textContent = CONFIG.message;
 
-  // ---------- Ambient petals ----------
   const petalLayer = document.getElementById('petalLayer');
   const petalColors = ['#F3A8C4', '#F7C4D8', '#E3B255'];
   for (let i = 0; i < 18; i++){
@@ -50,7 +66,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     petalLayer.appendChild(p);
   }
 
-  // ---------- Cake sprinkles ----------
   const sprinkleColors = ['var(--rose)', 'var(--gold)', 'var(--deep)', '#ffffff'];
   function addSprinkles(el, count, topRange, bottomRange){
     for (let i = 0; i < count; i++){
@@ -66,7 +81,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
   addSprinkles(document.querySelector('.tier-top'), 5, 20, 45);
   addSprinkles(document.querySelector('.tier-bottom'), 9, 12, 30);
 
-  // ---------- Build candles ----------
   const candlesWrap = document.getElementById('candles');
   const candleCount = Math.max(1, Math.min(CONFIG.age, 12));
   for (let i = 0; i < candleCount; i++){
@@ -78,7 +92,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     candlesWrap.appendChild(c);
   }
 
-  // ---------- Build gift boxes ----------
   const giftsGrid = document.getElementById('giftsGrid');
   CONFIG.surprises.forEach((note, i) => {
     const gift = document.createElement('div');
@@ -99,7 +112,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     });
   });
 
-  // ---------- Build photo gallery ----------
   const galleryGrid = document.getElementById('galleryGrid');
   const rotations = [-3, 2, -1.5, 3, -2.5, 1.5, -2, 2.5];
   CONFIG.photos.forEach((photo, i) => {
@@ -116,6 +128,11 @@ Selamat ulang tahun. Aku sayang kamu.`,
       img.alt = photo.caption || ('Kenangan ' + (i + 1));
       img.loading = 'lazy';
       frame.appendChild(img);
+
+      // klik foto -> buka lightbox (zoom + deskripsi)
+      img.addEventListener('click', () => {
+        openLightbox(photo.src, photo.caption || '');
+      });
     } else {
       frame.innerHTML = `
         <div class="ph-placeholder">
@@ -131,16 +148,7 @@ Selamat ulang tahun. Aku sayang kamu.`,
     card.appendChild(caption);
 
     galleryGrid.appendChild(card);
-
-    // Tambahkan event click untuk membuka modal jika foto ada src-nya
-    if (photo.src) {
-      card.style.cursor = 'pointer'; // Biar kelihatan bisa diklik
-      card.addEventListener('click', () => {
-        openModal(photo.src, photo.caption);
-      });
-    }
   });
-  
   const messageCard = document.getElementById('messageCard');
   const blowBtn = document.getElementById('blowBtn');
   let litCount = candleCount;
@@ -168,7 +176,11 @@ Selamat ulang tahun. Aku sayang kamu.`,
 
   const giftsSection = document.getElementById('giftsSection');
   const gallerySection = document.getElementById('gallerySection');
+  const giftSection = document.getElementById('giftSection');
   const replayBtn = document.getElementById('replayBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicIcon = document.getElementById('musicIcon');
 
   let revealed = false;
   function revealMessage(){
@@ -178,7 +190,34 @@ Selamat ulang tahun. Aku sayang kamu.`,
     celebrate();
     setTimeout(() => giftsSection.classList.add('reveal'), 700);
     setTimeout(() => gallerySection.classList.add('reveal'), 1100);
+    setTimeout(() => giftSection.classList.add('reveal'), 1500);
+    playBackgroundMusic();
   }
+
+  function playBackgroundMusic(){
+    const music = CONFIG.music || {};
+    if (!music.src) return;
+    bgMusic.src = music.src;
+    bgMusic.volume = 0.6;
+    bgMusic.play().catch(() => {
+      // browser mungkin blokir autoplay suara, biarkan user pencet tombolnya
+    });
+    musicToggle.style.display = 'flex';
+    musicToggle.classList.remove('paused');
+    musicIcon.textContent = '♪';
+  }
+
+  musicToggle.addEventListener('click', () => {
+    if (bgMusic.paused){
+      bgMusic.play();
+      musicToggle.classList.remove('paused');
+      musicIcon.textContent = '♪';
+    } else {
+      bgMusic.pause();
+      musicToggle.classList.add('paused');
+      musicIcon.textContent = '⏸';
+    }
+  });
 
   function celebrate(){
     burstConfetti(canvas.width / 2, canvas.height * 0.42, 140);
@@ -189,7 +228,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
 
   replayBtn.addEventListener('click', celebrate);
 
-  // ---------- Sparkles around the card ----------
   const sparkleLayer = document.getElementById('sparkleLayer');
   for (let i = 0; i < 14; i++){
     const s = document.createElement('span');
@@ -200,7 +238,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     sparkleLayer.appendChild(s);
   }
 
-  // ---------- Cover open (3D flip) ----------
   const invitation = document.getElementById('invitation');
   const openBtn = document.getElementById('openBtn');
   const cover = document.getElementById('cover');
@@ -219,7 +256,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     }, 1900);
   });
 
-  // ---------- Balloons ----------
   const balloonColors = ['#F3A8C4', '#E3B255', '#A6335C', '#F7C4D8'];
   function launchBalloons(){
     for (let i = 0; i < 9; i++){
@@ -235,7 +271,6 @@ Selamat ulang tahun. Aku sayang kamu.`,
     }
   }
 
-  // ---------- Confetti ----------
   const canvas = document.getElementById('confetti-canvas');
   const ctx = canvas.getContext('2d');
   function resizeCanvas(){
@@ -359,7 +394,120 @@ Selamat ulang tahun. Aku sayang kamu.`,
     }
   }
 
-  // ---------- Floating hearts ----------
+  const giftSlideAsk = document.getElementById('giftSlideAsk');
+  const giftSlideSorry = document.getElementById('giftSlideSorry');
+  const giftSlideDone = document.getElementById('giftSlideDone');
+  const giftYesBtn = document.getElementById('giftYesBtn');
+  const giftNoBtn = document.getElementById('giftNoBtn');
+  const giftTease = document.getElementById('giftTease');
+  const forgiveChoice = document.getElementById('forgiveChoice');
+  const forgiveQuestion = document.getElementById('forgiveQuestion');
+  const forgiveYesBtn = document.getElementById('forgiveYesBtn');
+  const forgiveNoBtn = document.getElementById('forgiveNoBtn');
+
+  const forgiveSteps = [
+    { q: 'Kamu mau memaafkan aku atas kelalaian ku?', yes: 'Iy' },
+    { q: 'Yakin nih kamuu benerann mau amafin akuu?', yes: 'Iya, terserah' },
+    { q: 'Yakin banget? Beneran gak kesel samaa akuu?', yes: 'Beneran iya dimaafin' },
+    { q: 'Terakhir nih... janji gak bakal berubah pikiran?', yes: 'Janji sayangg' },
+    { q: 'Kamuu kalauu akuu ada kesalahan ginii masih sayangg akuu gaaa?hiks.', yes: 'masihh sayanggg bangett'}
+  ];
+  let forgiveStep = 0;
+  let giftTeaseClicks = 0;
+
+  const giftTeaseLines = [
+    'yakin? padahal udah disiapin dari jauh-jauh hari lho 🥹',
+    'coba dipikir lagi deh...',
+    'yaudah deh, kalau berubah pikiran tombol satunya masih ada kok 👀'
+  ];
+
+  giftNoBtn.addEventListener('click', () => {
+    giftTease.textContent = giftTeaseLines[Math.min(giftTeaseClicks, giftTeaseLines.length - 1)];
+    giftTeaseClicks++;
+  });
+
+  giftYesBtn.addEventListener('click', () => {
+    giftSlideAsk.classList.add('hide');
+    giftSlideSorry.classList.remove('hide');
+    forgiveStep = 0;
+    renderForgiveStep();
+  });
+
+  function renderForgiveStep(){
+    const step = forgiveSteps[forgiveStep];
+    forgiveQuestion.textContent = step.q;
+    forgiveYesBtn.textContent = step.yes;
+    forgiveNoBtn.style.left = 'calc(50% + 60px)';
+    forgiveNoBtn.style.top = '50%';
+  }
+
+  const memeVideoWrap = document.getElementById('memeVideoWrap');
+  let memeVideoRendered = false;
+
+  function renderMemeVideo(){
+    if (memeVideoRendered) return;
+    memeVideoRendered = true;
+    const meme = CONFIG.memeVideo || {};
+    if (meme.src){
+      memeVideoWrap.innerHTML = `
+        <video src="${meme.src}" autoplay loop muted playsinline controls></video>
+        <p class="quiz-count" style="margin-top:8px;">${meme.caption || ''}</p>
+      `;
+    } else {
+      memeVideoWrap.innerHTML = `
+        <p class="meme-placeholder">
+          🎬 isi "src" di CONFIG.memeVideo dengan nama file video meme kamu<br>
+          (contoh: "meme.mp4"), taruh di folder yang sama dengan index.html
+        </p>`;
+    }
+  }
+
+  forgiveYesBtn.addEventListener('click', () => {
+    forgiveStep++;
+    if (forgiveStep < forgiveSteps.length){
+      renderForgiveStep();
+    } else {
+      giftSlideSorry.classList.add('hide');
+      giftSlideDone.classList.remove('hide');
+      celebrate();
+      renderMemeVideo();
+    }
+  });
+
+  function dodgeNoButton(){
+    const bounds = forgiveChoice.getBoundingClientRect();
+    const btnRect = forgiveNoBtn.getBoundingClientRect();
+    const padding = 10;
+    const maxX = Math.max(bounds.width - btnRect.width - padding, padding);
+    const maxY = Math.max(bounds.height - btnRect.height - padding, padding);
+    const newX = padding + Math.random() * maxX;
+    const newY = padding + Math.random() * maxY;
+    forgiveNoBtn.style.left = newX + 'px';
+    forgiveNoBtn.style.top = newY + 'px';
+    forgiveNoBtn.style.transform = 'translate(0, 0)';
+  }
+
+  forgiveChoice.addEventListener('mousemove', (e) => {
+    if (giftSlideSorry.classList.contains('hide')) return;
+    const rect = forgiveNoBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+    if (dist < 90) dodgeNoButton();
+  });
+
+  forgiveNoBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    dodgeNoButton();
+  }, { passive: false });
+
+  forgiveNoBtn.addEventListener('pointerenter', dodgeNoButton);
+
+  forgiveNoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    dodgeNoButton();
+  });
+
   function floatingHearts(duration){
     const end = Date.now() + duration;
     (function spawn(){
@@ -375,35 +523,39 @@ Selamat ulang tahun. Aku sayang kamu.`,
       setTimeout(spawn, 350 + Math.random() * 400);
     })();
   }
-  
-  // ---------- Modal (Lightbox) Logic ----------
-const modal = document.getElementById('photoModal');
-const modalImg = document.getElementById('modalImg');
-const modalCaption = document.getElementById('modalCaption');
-const modalClose = document.getElementById('modalClose');
 
-function openModal(src, caption) {
-  modal.style.display = "flex";
-  // Sedikit delay untuk efek transisi yang mulus
-  setTimeout(() => modal.classList.add('show'), 10);
-  modalImg.src = src;
-  modalCaption.textContent = caption || "";
-}
+  // ---------- Lightbox foto kenangan ----------
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  let lightboxOpen = false;
 
-function closeModal() {
-  modal.classList.remove('show');
-  // Tunggu transisi selesai sebelum di-hide beneran
-  setTimeout(() => modal.style.display = "none", 300); 
-}
-
-// Tutup modal kalau tombol X diklik
-if (modalClose) {
-  modalClose.addEventListener('click', closeModal);
-}
-
-// Tutup modal kalau area di luar foto (background gelapnya) diklik
-window.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    closeModal();
+  function openLightbox(src, caption){
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || 'Foto kenangan';
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightboxOpen = true;
+    document.body.style.overflow = 'hidden';
   }
-});
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // klik di area gelap (di luar foto/caption) untuk menutup
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // tombol Esc untuk menutup
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxOpen) closeLightbox();
+  });
